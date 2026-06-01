@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ – DocuFire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire: #E8431A;
+    --fire-bright: #FF5C2B;
+    --dark: #0D0D0F;
+    --dark-2: #141417;
+    --dark-3: #1C1C21;
+    --dark-4: #252529;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0EEE8;
+    --text-dim: rgba(240,238,232,0.5);
+    --text-dimmer: rgba(240,238,232,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-back {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fire-bright);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-back:hover { opacity: 0.7; }
+
+  /* HERO */
+  .hero {
+    padding: 140px 48px 64px;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(232,67,26,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,67,26,0.1);
+    border: 1px solid rgba(232,67,26,0.3);
+    color: var(--fire-bright);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 99px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-dim);
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  /* FILTER TABS */
+  .filter-bar {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 48px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    border-color: rgba(232,67,26,0.4);
+    color: var(--fire-bright);
+  }
+
+  .filter-btn.active {
+    background: rgba(232,67,26,0.1);
+    border-color: rgba(232,67,26,0.3);
+    color: var(--fire-bright);
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 48px 96px;
+  }
+
+  /* CATEGORY */
+  .faq-category {
+    margin-bottom: 56px;
+  }
+
+  .category-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--fire);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .category-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 24px;
+    padding-left: 16px;
+    border-left: 3px solid var(--fire);
+  }
+
+  /* FAQ ITEMS */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: var(--dark-2);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(232,67,26,0.2);
+  }
+
+  .faq-item.open {
+    border-color: rgba(232,67,26,0.25);
+    background: var(--dark-3);
+  }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .faq-question:hover { color: var(--fire-bright); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-dimmer);
+    transition: all 0.2s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon {
+    background: rgba(232,67,26,0.1);
+    border-color: rgba(232,67,26,0.3);
+    color: var(--fire-bright);
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 0 24px 22px;
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+
+  .faq-item.open .faq-answer { display: block; }
+
+  .faq-answer p { margin-bottom: 10px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+
+  .faq-answer strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .faq-answer a {
+    color: var(--fire-bright);
+    text-decoration: none;
+  }
+  .faq-answer a:hover { text-decoration: underline; }
+
+  .faq-answer .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(52,199,89,0.1);
+    color: #34c759;
+    border: 1px solid rgba(52,199,89,0.2);
+    margin-right: 4px;
+  }
+
+  /* STILL HAVE QUESTIONS */
+  .contact-cta {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 64px;
+  }
+
+  .contact-cta h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+
+  .contact-cta p {
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .contact-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fire);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .contact-cta a:hover { background: var(--fire-bright); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    color: var(--text-dimmer);
+    margin-bottom: 12px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-dimmer);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--fire-bright); }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 120px 20px 48px; }
+    .filter-bar { padding: 24px 20px 0; }
+    .container { padding: 32px 20px 72px; }
+    footer { padding: 32px 20px; }
+    .contact-cta { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-text">DocuFire</span>
+  </a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">Support</div>
+  <h1>Frequently Asked<br>Questions</h1>
+  <p class="hero-sub">Straight answers about DocuFire – how it works, what it does with your data, and what you get when you subscribe.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCategory('all')">All</button>
+  <button class="filter-btn" onclick="filterCategory('privacy')">Data & Privacy</button>
+  <button class="filter-btn" onclick="filterCategory('ai')">AI Features</button>
+  <button class="filter-btn" onclick="filterCategory('billing')">Billing</button>
+  <button class="filter-btn" onclick="filterCategory('general')">General</button>
+</div>
+
+<div class="container">
+
+  <!-- DATA & PRIVACY -->
+  <div class="faq-category" data-category="privacy">
+    <span class="category-label">01</span>
+    <div class="category-title">Data & Privacy</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Where is my case data stored?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>On your device.</strong> All case data – addresses, owner information, witness statements, scene photos, breaker panels, evidence logs, and exported PDFs – is stored locally on your iPad or Mac. It never leaves your device unless you explicitly share or export it yourself.</p>
+        <p>If you have iCloud enabled, your cases sync across your own Apple devices through your personal iCloud account. DocuFire never has access to that data.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can DocuFire or anyone at DocuFire LLC see my cases?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>No.</strong> We have no server, no database, and no backend that receives your case data. There is no mechanism by which anyone at DocuFire LLC can view, access, or retrieve your investigation files.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What data does DocuFire collect?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>The only data that leaves your device is anonymous, non-identifiable diagnostic information collected by TelemetryDeck – crash reports and general performance metrics like app launch time. This data contains no names, no case details, and cannot be linked to any individual.</p>
+        <p>We do not collect contact info, location data, photos, financial information, or any case content.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What happens to my data if I cancel my subscription?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Nothing. Your cases stay on your device exactly as they are. Canceling your subscription affects your access to the app's features, not your data. To remove your data, simply delete the app.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is DocuFire appropriate for sensitive insurance and litigation cases?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>Yes.</strong> Because all case data is stored locally on your device and never transmitted to DocuFire's servers, DocuFire is well-suited for sensitive insurance, subrogation, and litigation support work. Your client information, findings, and reports stay under your control at all times.</p>
+        <p>As with any tool, you are responsible for the security of your device and for following any confidentiality requirements set by your clients or the courts.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AI FEATURES -->
+  <div class="faq-category" data-category="ai">
+    <span class="category-label">02</span>
+    <div class="category-title">AI Features</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What does the AI assistant actually do?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>The AI assistant reviews your completed case documentation and can provide cause determination review, flag inconsistencies, suggest follow-up interview questions, and reference applicable NFPA 921 sections. It is a review tool – it does not make origin and cause determinations on your behalf.</p>
+        <p>The AI feature is optional and disabled by default.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Does the AI see my clients' personal information?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>No.</strong> DocuFire automatically strips all personally identifiable information before sending anything to an AI provider. Fields including owner names, occupant details, witness contact information, dates of birth, phone numbers, and addresses are excluded from all AI requests.</p>
+        <p>The AI only sees structural and investigative content – fire patterns, cause documentation, utility information, and NFPA 921 compliance data.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is the AI feature on by default?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>No.</strong> The AI feature is disabled by default and requires explicit action to enable. You will never have data sent to an AI provider without choosing to do so.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do I need a separate account to use AI features?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. The AI feature uses your own API credentials from your chosen AI provider. You connect your own account – DocuFire does not provide or proxy AI access. This means your data goes directly from your device to your AI provider under your own account's terms and privacy policy.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I use DocuFire without ever using AI?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>Absolutely.</strong> The AI feature is entirely optional. Every other feature in DocuFire – case documentation, breaker panels, weather pull, evidence log, PDF export, compliance checklist – works completely independently with no AI involved.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BILLING -->
+  <div class="faq-category" data-category="billing">
+    <span class="category-label">03</span>
+    <div class="category-title">Billing & Subscription</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What are the subscription options?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>DocuFire Monthly</strong> – $16.99/month. Full access, cancel anytime.</p>
+        <p><strong>DocuFire Annual</strong> – $169.99/year. That's two months free compared to paying monthly. Best value for investigators who use DocuFire regularly.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is there a free trial?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. DocuFire includes a free trial that lets you complete a set number of cases before subscribing. No payment information is required to start. The trial gives you full access to all features so you can evaluate the app on real casework before committing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I switch from monthly to annual?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. You can upgrade from monthly to annual at any time through the App Store subscription management page. Apple handles the proration automatically.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I cancel?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>All billing is managed through Apple. To cancel, go to <strong>Settings → Apple ID → Subscriptions</strong> on your iPhone or iPad, find DocuFire, and tap Cancel Subscription. You'll retain access through the end of your current billing period.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is there an agency or team plan?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Not yet. DocuFire currently offers individual subscriptions only. Agency and team pricing is on the roadmap. If you represent an agency or department with multiple investigators, <a href="mailto:rogerthorpe@docufire.app">reach out directly</a> to discuss options.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GENERAL -->
+  <div class="faq-category" data-category="general">
+    <span class="category-label">04</span>
+    <div class="category-title">General</div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Does DocuFire work offline?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>Yes.</strong> DocuFire is fully functional without an internet connection. You can create cases, document scenes, fill out all sections, and export PDFs entirely offline. The only features that require internet are the historical weather pull and the AI assistant.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What devices does DocuFire support?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><strong>iPad</strong> – All iPad models running iPadOS 16 or later. Optimized for iPad Pro with Apple Pencil support.</p>
+        <p><strong>Mac</strong> – All Macs running macOS 13 Ventura or later via Mac Catalyst.</p>
+        <p>iPhone and Android are not currently supported. Android is on the roadmap.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Does DocuFire sync across my devices?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. DocuFire uses iCloud to automatically sync cases across all your Apple devices signed in to the same Apple ID. Start a case on your iPad at the scene and it will be available on your Mac when you get back to the office – no manual export or transfer needed.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I export a PDF report?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>From inside any case, tap the <strong>Export</strong> tab. Toggle which sections you want included – incident info, weather, evidence log, timeline, notes, checklist, and photo appendix are all individually selectable. Tap <strong>Export Case PDF</strong> and the standard iOS share sheet will appear, letting you AirDrop, email, save to Files, or send the report anywhere.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Who built DocuFire?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>DocuFire was built by <strong>Roger Thorpe</strong>, a NAFI-CVFI and IAAI-CFI certified fire investigator based in New Paltz, NY. It started as a frustration – there were no dedicated native iPad or Mac apps built for how fire investigators actually work in the field. Every field, workflow, and design decision in DocuFire comes from real investigative experience.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta">
+    <h3>Still Have Questions?</h3>
+    <p>Can't find what you're looking for? Reach out directly – Roger reads every email.</p>
+    <a href="mailto:rogerthorpe@docufire.app">Send a Message</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">DOCUFIRE</div>
+  <div class="footer-copy">© 2026 DocuFire LLC · New Paltz, NY</div>
+  <div class="footer-links">
+    <a href="mailto:beta@docufire.app">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/">Home</a>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    // open this one if it wasn't open
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function filterCategory(cat) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.faq-category').forEach(function(c) {
+      if (cat === 'all' || c.dataset.category === cat) {
+        c.style.display = '';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
