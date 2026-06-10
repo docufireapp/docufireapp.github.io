@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — DocuFire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire: #E8431A;
+    --fire-bright: #FF5C2B;
+    --dark: #0D0D0F;
+    --dark-2: #141417;
+    --dark-3: #1C1C21;
+    --dark-4: #252529;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0EEE8;
+    --text-dim: rgba(240,238,232,0.5);
+    --text-dimmer: rgba(240,238,232,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-back {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fire-bright);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+  .nav-back:hover { opacity: 0.7; }
+
+  /* HERO */
+  .hero {
+    padding: 140px 48px 64px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(232,67,26,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,67,26,0.1);
+    border: 1px solid rgba(232,67,26,0.3);
+    color: var(--fire-bright);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 99px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+
+  .hero-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dimmer);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-meta span { margin: 0 8px; color: var(--text-dimmer); }
+
+  /* CONTAINER */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+  }
+
+  /* SECTIONS */
+  .policy-section {
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .policy-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--fire);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .policy-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding-left: 16px;
+    border-left: 3px solid var(--fire);
+  }
+
+  .policy-section p {
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .policy-section p:last-child { margin-bottom: 0; }
+
+  .policy-section p strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .policy-section ul {
+    list-style: none;
+    margin: 14px 0;
+  }
+
+  .policy-section ul li {
+    color: var(--text-dim);
+    font-size: 15px;
+    font-weight: 300;
+    padding: 5px 0 5px 20px;
+    position: relative;
+  }
+
+  .policy-section ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--fire);
+    font-size: 12px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(232,67,26,0.06);
+    border: 1px solid rgba(232,67,26,0.2);
+    border-left: 3px solid var(--fire);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .callout p {
+    color: var(--text) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+  }
+
+  /* CONTACT */
+  .contact-block {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    margin-top: 20px;
+  }
+
+  .contact-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 16px;
+    margin-bottom: 4px !important;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--fire-bright);
+    text-decoration: none;
+    background: rgba(232,67,26,0.08);
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid rgba(232,67,26,0.2);
+    margin-top: 12px;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.8; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.08em;
+    color: var(--text-dimmer);
+    margin-bottom: 12px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-dimmer);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--fire-bright); }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 120px 20px 48px; }
+    .container { padding: 40px 20px 72px; }
+    footer { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-text">DocuFire</span>
+  </a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">Legal</div>
+  <h1>Terms of Use</h1>
+  <div class="hero-meta">
+    DocuFire LLC <span>·</span> Effective June 10, 2026 <span>·</span> Last updated June 10, 2026
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="policy-section">
+    <span class="section-num">01</span>
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, or using DocuFire ("the App"), you agree to be bound by these Terms of Use. If you do not agree to these terms, do not use the App.</p>
+    <p>These Terms of Use constitute a legally binding agreement between you and DocuFire LLC, a New York limited liability company ("DocuFire," "we," "us," or "our").</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">02</span>
+    <h2>Description of Service</h2>
+    <p>DocuFire is a professional field documentation application designed for use by licensed fire investigators. The App provides tools for documenting fire scenes, organizing case information, and generating reports consistent with NFPA 921 methodology.</p>
+    <div class="callout">
+      <p><strong>DocuFire is a documentation tool only.</strong> It does not provide legal, professional, or expert opinions. All investigative findings, cause determinations, and conclusions are solely those of the licensed investigator using the App.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">03</span>
+    <h2>Subscriptions &amp; Payments</h2>
+    <p>DocuFire offers a freemium model. The first 5 cases are free. Continued use beyond 5 cases requires an active subscription.</p>
+    <p><strong>Available subscription plans:</strong></p>
+    <ul>
+      <li>DocuFire Monthly — $16.99 per month</li>
+      <li>DocuFire Annual — $169.99 per year (includes 2 months free)</li>
+    </ul>
+    <p>All subscriptions are auto-renewable. Your subscription will automatically renew at the end of each billing period unless cancelled at least 24 hours before the renewal date. Subscriptions are managed through your Apple ID account settings.</p>
+    <p>Payment is charged to your Apple ID account at confirmation of purchase. You may cancel your subscription at any time through the App Store settings on your device. Cancellation takes effect at the end of the current billing period — no partial refunds are issued for unused time.</p>
+    <p>All billing and payment processing is handled exclusively by Apple. DocuFire LLC does not receive, store, or have access to your payment information. For billing issues, contact Apple Support.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">04</span>
+    <h2>License &amp; Permitted Use</h2>
+    <p>DocuFire LLC grants you a limited, non-exclusive, non-transferable, revocable license to use the App for your personal or professional fire investigation activities.</p>
+    <p>You may not:</p>
+    <ul>
+      <li>Copy, modify, or distribute the App or its contents</li>
+      <li>Reverse engineer or attempt to extract source code</li>
+      <li>Use the App for any unlawful purpose</li>
+      <li>Share your account or subscription with others</li>
+      <li>Use the App to document cases on behalf of unlicensed individuals</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">05</span>
+    <h2>Professional Responsibility</h2>
+    <p>DocuFire is designed to support — not replace — the professional judgment of a licensed fire investigator. The investigator using the App is solely responsible for:</p>
+    <ul>
+      <li>The accuracy and completeness of all case documentation</li>
+      <li>All origin and cause determinations</li>
+      <li>The content of any exported reports</li>
+      <li>Compliance with applicable laws, regulations, and professional standards</li>
+      <li>Adherence to NFPA 921 and NFPA 1033 or other applicable methodologies</li>
+    </ul>
+    <p>DocuFire LLC bears no responsibility for investigative findings, professional opinions, or conclusions contained in any report generated using the App.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">06</span>
+    <h2>AI Features</h2>
+    <p>DocuFire includes optional AI-assisted features. These features are disabled by default and must be explicitly enabled by the user. AI-generated content is provided for informational purposes only and does not constitute a professional opinion.</p>
+    <p>You are responsible for reviewing, verifying, and taking professional responsibility for any AI-generated content before including it in case documentation or reports. DocuFire LLC makes no representations about the accuracy or completeness of AI-generated output.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">07</span>
+    <h2>Your Data</h2>
+    <p>All case data you enter into DocuFire is stored locally on your device. DocuFire LLC does not access, collect, or store your case data. You are solely responsible for maintaining backups of your data and for the security of your device.</p>
+    <p>By using the App, you represent that you have the legal authority to document the information you enter, including any information about third parties such as property owners, occupants, or witnesses.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">08</span>
+    <h2>Disclaimer of Warranties</h2>
+    <p>DocuFire is provided "as is" and "as available" without warranties of any kind, express or implied. DocuFire LLC does not warrant that the App will be uninterrupted, error-free, or free of bugs or defects. Use of the App is at your sole risk.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">09</span>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, DocuFire LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including but not limited to loss of data, loss of revenue, or professional liability claims.</p>
+    <p>DocuFire LLC's total liability to you for any claims arising from use of the App shall not exceed the amount you paid for the App in the twelve months preceding the claim.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">10</span>
+    <h2>Governing Law</h2>
+    <p>These Terms of Use are governed by the laws of the State of New York, without regard to its conflict of law provisions. Any disputes arising from these terms shall be resolved in the courts of Ulster County, New York.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">11</span>
+    <h2>Changes to These Terms</h2>
+    <p>DocuFire LLC reserves the right to update these Terms of Use at any time. Material changes will be communicated by updating the effective date at the top of this page. Continued use of the App after changes are posted constitutes your acceptance of the updated terms.</p>
+  </div>
+
+  <div class="policy-section">
+    <span class="section-num">12</span>
+    <h2>Contact</h2>
+    <p>For questions about these Terms of Use, please contact:</p>
+    <div class="contact-block">
+      <p class="contact-name">Roger Thorpe</p>
+      <p style="font-size:14px;color:var(--text-dimmer);">DocuFire LLC · New Paltz, NY</p>
+      <a href="mailto:legal@docufire.app" class="contact-email">legal@docufire.app</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">DOCUFIRE</div>
+  <div class="footer-copy">© 2026 DocuFire LLC · New Paltz, NY</div>
+  <div class="footer-links">
+    <a href="mailto:legal@docufire.app">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
