@@ -455,13 +455,19 @@
   <div class="policy-section">
     <span class="section-num">04</span>
     <h2>AI Features &amp; PII Protection</h2>
-    <p>DocuFire includes an optional AI assistant feature. <strong>This feature is disabled by default</strong> and is never activated without explicit action by you.</p>
-    <p>If you choose to use the AI feature, it operates using your own API credentials connected directly to your chosen AI provider. DocuFire does not proxy, store, log, or have access to any content sent to or received from AI services.</p>
+    <p>DocuFire includes optional AI-powered features. <strong>These features are never activated without your explicit permission.</strong></p>
+
+    <p><strong>AI Case Analysis (Anthropic).</strong> If you choose to run AI Analysis, structured case documentation — including property type and structure details, fire patterns, fuel load data, ignition source information, weather conditions, and your written observations — is sent to Anthropic (the maker of Claude) for processing. This data is used solely to generate an advisory analysis within the app and is not used by Anthropic to train AI models.</p>
+
+    <p><strong>Voice Note Transcription (OpenAI).</strong> If you choose to use voice note transcription, audio recordings made within the app are sent to OpenAI (Whisper API) to be converted to text. This audio is used solely for transcription and is not used to train AI models.</p>
+
     <div class="callout">
-      <p><strong>PII is automatically excluded from all AI requests.</strong> DocuFire never sends personally identifiable information to any AI provider. Fields including owner names, occupant details, witness contact information, dates of birth, phone numbers, and addresses are stripped before any content is passed to an AI model.</p>
+      <p><strong>Personally identifiable information is automatically stripped before any data is sent.</strong> Owner and insured names, full street addresses (only city/state-level location is retained), phone numbers, email addresses, policy and claim numbers, VINs, serial numbers, witness names and contact information, casualty names, and investigator names are never sent. Casualty information is limited to counts only.</p>
     </div>
-    <p>The AI feature operates only on structural and investigative content — fire patterns, cause determinations, NFPA 921 references — never on the personal information of any party involved in a case.</p>
-    <p>You are responsible for reviewing the privacy policy of whichever AI provider you connect. DocuFire takes no responsibility for data handling by third-party AI services you choose to enable.</p>
+
+    <p>Before either AI feature is used for the first time, DocuFire displays a disclosure explaining exactly what data will be sent and to whom, and requires your explicit permission before proceeding. If you decline, you retain full access to all other features of the app. You may withdraw consent for AI Analysis at any time in Settings → AI Configuration.</p>
+
+    <p>Anthropic and OpenAI are both contractually and legally bound to handle data submitted via their APIs under their respective enterprise/API data usage policies, which prohibit using API-submitted data for model training. For more information, see Anthropic's privacy policy at <a href="https://anthropic.com/privacy" style="color:var(--fire-bright);" target="_blank">anthropic.com/privacy</a> and OpenAI's privacy policy at <a href="https://openai.com/privacy" style="color:var(--fire-bright);" target="_blank">openai.com/privacy</a>.</p>
   </div>
 
   <div class="policy-section">
