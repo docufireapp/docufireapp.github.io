@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Reports — DocuFire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire: #E8431A;
+    --fire-bright: #FF5C2B;
+    --dark: #0D0D0F;
+    --dark-2: #141417;
+    --dark-3: #1C1C21;
+    --dark-4: #252529;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0EEE8;
+    --text-dim: rgba(240,238,232,0.5);
+    --text-dimmer: rgba(240,238,232,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  nav {
+    position: sticky;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(13,13,15,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--fire-bright); }
+  .nav-back {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--fire-bright); }
+
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 32px 32px;
+    text-align: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--fire-bright);
+    border: 1px solid rgba(232,67,26,0.3);
+    background: rgba(232,67,26,0.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .hero p {
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .notice {
+    max-width: 900px;
+    margin: 32px auto 0;
+    padding: 16px 24px;
+    background: rgba(232,67,26,0.06);
+    border: 1px solid rgba(232,67,26,0.2);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .notice strong { color: var(--text); }
+
+  .tabs-wrap {
+    max-width: 900px;
+    margin: 48px auto 0;
+    padding: 0 32px;
+  }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .tab {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 22px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab.active {
+    color: var(--fire-bright);
+    border-bottom-color: var(--fire-bright);
+  }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  .panel {
+    display: none;
+    padding: 28px 0 0;
+  }
+  .panel.active { display: block; }
+  .panel-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+
+  .viewer-frame {
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .viewer-frame iframe {
+    width: 100%;
+    height: 900px;
+    border: none;
+    display: block;
+    background: #fff;
+  }
+  .viewer-fallback {
+    display: none;
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--text-dim);
+  }
+  .viewer-fallback a {
+    color: var(--fire-bright);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .download-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin: 24px 0 80px;
+  }
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-download:hover {
+    border-color: var(--fire-bright);
+    background: var(--dark-4);
+  }
+
+  .cta {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px 100px;
+    text-align: center;
+  }
+  .cta a {
+    display: inline-block;
+    background: var(--fire);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .cta a:hover { background: var(--fire-bright); }
+  .cta p { color: var(--text-dim); margin-bottom: 20px; }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .hero h1 { font-size: 34px; }
+    .tabs { overflow-x: auto; }
+    .viewer-frame iframe { height: 600px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">DOCU<span>FIRE</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">Sample Output</span>
+  <h1>See What DocuFire Exports</h1>
+  <p>Real exports generated by the app from a sample case. These organize your field data and give you a head start on a summary — your full investigative report is still yours to write.</p>
+</div>
+
+<div class="notice">
+  <strong>Sample data only.</strong> All names, addresses, and case details below are fictional and for demonstration purposes only.
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="field">Field Documentation Export</button>
+    <button class="tab" data-tab="summary">Summary Export</button>
+  </div>
+
+  <div class="panel active" id="panel-field">
+    <p class="panel-desc">The field documentation export — every section of the case file, structured and formatted for your records. This isn't your final report; it's the organized field data your full report gets written from.</p>
+    <div class="viewer-frame">
+      <iframe src="sample-field-report.pdf" title="Sample Field Documentation Export"></iframe>
+      <div class="viewer-fallback">
+        Your browser can't preview PDFs inline. <a href="sample-field-report.pdf" target="_blank">Open the sample field documentation export →</a>
+      </div>
+    </div>
+    <div class="download-row">
+      <a class="btn-download" href="sample-field-report.pdf" target="_blank">↗ Open Full Size</a>
+      <a class="btn-download" href="sample-field-report.pdf" download>⬇ Download PDF</a>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-summary">
+    <p class="panel-desc">A shorter summary export for sending to a carrier or client when the file calls for it. It pulls the key facts from your case automatically and leaves clearly marked sections for you to write the narrative and conclusions yourself — DocuFire doesn't write your findings for you.</p>
+    <div class="viewer-frame">
+      <iframe src="sample-summary-report.pdf" title="Sample Investigation Summary Report"></iframe>
+      <div class="viewer-fallback">
+        Your browser can't preview PDFs inline. <a href="sample-summary-report.pdf" target="_blank">Open the sample summary report →</a>
+      </div>
+    </div>
+    <div class="download-row">
+      <a class="btn-download" href="sample-summary-report.pdf" target="_blank">↗ Open Full Size</a>
+      <a class="btn-download" href="sample-summary-report.pdf" download>⬇ Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <p>Ready to start documenting your own cases?</p>
+  <a href="https://apps.apple.com/app/docufire/id6769825319">Download on the App Store</a>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
