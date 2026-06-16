@@ -153,24 +153,19 @@
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
-  .viewer-frame iframe {
+  .viewer-frame img {
     width: 100%;
-    height: 900px;
-    border: none;
+    max-width: 760px;
+    height: auto;
     display: block;
-    background: #fff;
-  }
-  .viewer-fallback {
-    display: none;
-    padding: 60px 24px;
-    text-align: center;
-    color: var(--text-dim);
-  }
-  .viewer-fallback a {
-    color: var(--fire-bright);
-    text-decoration: none;
-    font-weight: 500;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
 
   .download-row {
@@ -222,7 +217,7 @@
     nav { padding: 16px 20px; }
     .hero h1 { font-size: 34px; }
     .tabs { overflow-x: auto; }
-    .viewer-frame iframe { height: 600px; }
+    .viewer-frame { padding: 14px; }
   }
 </style>
 </head>
@@ -252,10 +247,11 @@
   <div class="panel active" id="panel-field">
     <p class="panel-desc">The field documentation export — every section of the case file, structured and formatted for your records. This isn't your final report; it's the organized field data your full report gets written from.</p>
     <div class="viewer-frame">
-      <iframe src="sample-field-report.pdf#view=FitH" title="Sample Field Documentation Export"></iframe>
-      <div class="viewer-fallback">
-        Your browser can't preview PDFs inline. <a href="sample-field-report.pdf" target="_blank">Open the sample field documentation export →</a>
-      </div>
+      <img src="images/field-page-1.png" alt="Field Documentation Export — Page 1">
+      <img src="images/field-page-2.png" alt="Field Documentation Export — Page 2">
+      <img src="images/field-page-3.png" alt="Field Documentation Export — Page 3">
+      <img src="images/field-page-4.png" alt="Field Documentation Export — Page 4">
+      <img src="images/field-page-5.png" alt="Field Documentation Export — Page 5">
     </div>
     <div class="download-row">
       <a class="btn-download" href="sample-field-report.pdf" target="_blank">↗ Open Full Size</a>
@@ -266,10 +262,9 @@
   <div class="panel" id="panel-summary">
     <p class="panel-desc">A shorter summary export for sending to a carrier or client when the file calls for it. It pulls the key facts from your case automatically and leaves clearly marked sections for you to write the narrative and conclusions yourself — DocuFire doesn't write your findings for you.</p>
     <div class="viewer-frame">
-      <iframe src="sample-summary-report.pdf#view=FitH" title="Sample Investigation Summary Report"></iframe>
-      <div class="viewer-fallback">
-        Your browser can't preview PDFs inline. <a href="sample-summary-report.pdf" target="_blank">Open the sample summary report →</a>
-      </div>
+      <img src="images/summary-page-1.png" alt="Summary Export — Page 1">
+      <img src="images/summary-page-2.png" alt="Summary Export — Page 2">
+      <img src="images/summary-page-3.png" alt="Summary Export — Page 3">
     </div>
     <div class="download-row">
       <a class="btn-download" href="sample-summary-report.pdf" target="_blank">↗ Open Full Size</a>
