@@ -334,6 +334,7 @@
   .card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
   .card p { font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.7; }
   .card p a { color: var(--fire-bright); text-decoration: none; }
+  @media (max-width: 760px) { .cards[style] { grid-template-columns: 1fr !important; } }
   .who { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fire-bright); border: 1px solid rgba(232,67,26,0.35); border-radius: 99px; padding: 2px 9px; margin-bottom: 8px; }
   .faq { margin-top: 24px; border-top: 1px solid var(--border); }
   .faq details { border-bottom: 1px solid var(--border); }
@@ -362,146 +363,91 @@
 <div class="hero">
   <div class="hero-glow"></div>
   <div class="hero-badge">For Agencies &amp; Departments</div>
-  <h1>DOCUFIRE<br><span>INSTITUTIONAL EDITION.</span></h1>
-  <p class="hero-sub">The same DocuFire app your investigators would download from the App Store, delivered to your department's iPads through Apple Business Manager and paid for on a purchase order. No subscription, no credit card, nothing charged through Apple.</p>
+  <h1>DOCUFIRE FOR<br><span>YOUR DEPARTMENT.</span></h1>
+  <p class="hero-sub">Every investigator gets the same app. The only question is how your department wants to pay, because that decides how the app gets onto the iPads. Pick your path below. The price is the same on all three: <strong style="color:var(--text)">$169.99 per iPad, per year.</strong></p>
 </div>
 
 <div class="container">
 
   <div class="block">
-    <span class="section-label">Two ways to get DocuFire</span>
+    <span class="section-label">Start here</span>
     <h2 class="section-title">Which one is you?</h2>
-    <div class="cards">
+    <div class="cards" style="grid-template-columns: 1fr 1fr 1fr;">
       <div class="card">
-        <h4>Individual investigator, or a small agency paying by card</h4>
-        <p>Download <a href="https://apps.apple.com/app/docufire/id6769825319" target="_blank" rel="noopener">DocuFire from the App Store</a>, try it, and subscribe in the app: $169.99 per year, per iPad, charged to the Apple ID on that iPad. A department card works fine. No Apple Business Manager, no paperwork. Nothing else on this page applies to you.</p>
+        <span class="who">Path A</span>
+        <h4>We'll pay with a card</h4>
+        <p>Fastest. No paperwork with us, no IT setup. Each iPad subscribes in the App Store. <a href="#path-a">Steps ↓</a></p>
       </div>
       <div class="card">
-        <h4>Department, agency, or municipality buying on a PO</h4>
-        <p>Your finance office needs an invoice, and your IT team manages the iPads through Apple Business Manager. That's DocuFire Institutional Edition, and this page explains exactly how it works. Same app, same price, different paperwork.</p>
+        <span class="who">Path B</span>
+        <h4>Purchase order, and we have IT</h4>
+        <p>You need an invoice, and someone at your department already manages your iPads. <a href="#path-b">Steps ↓</a></p>
       </div>
+      <div class="card">
+        <span class="who">Path C</span>
+        <h4>Purchase order, no IT, no Mac</h4>
+        <p>You need an invoice, but nobody manages your iPads and you don't own a Mac. <a href="#path-c">Steps ↓</a></p>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:20px;">
+      <a class="primary" href="/institutional-setup-guide.pdf" target="_blank" rel="noopener">Download this as a PDF</a>
+      <a class="secondary" href="mailto:support@docufire.app?subject=DocuFire%20for%20our%20department">Email support@docufire.app</a>
     </div>
   </div>
 
-  <div class="block">
-    <span class="section-label">What you get</span>
-    <h2 class="section-title">Same app, different delivery</h2>
-    <p class="body-text">Institutional Edition is DocuFire with the subscription removed. Every feature is there: structure, vehicle, vessel, and wildland cases; scene diagrams and LiDAR room scans; witness statements; evidence log; PDF and Word reports; the desktop web portal at <a href="https://portal.docufire.app" target="_blank" rel="noopener">portal.docufire.app</a> for finishing reports at the office. It arrives as a <strong>custom app in Apple Business Manager</strong>, which is Apple's standard channel for software that organizations buy rather than individuals. Your IT team installs it on investigators' iPads the same way they install anything else, and updates arrive automatically.</p>
-  </div>
-
-  <div class="block">
-    <span class="section-label">How it works</span>
-    <h2 class="section-title">Five steps, start to finish</h2>
-    <p class="body-text">Two of these are ours, three are yours. The whole thing usually takes less time than the purchase order does.</p>
-
+  <div class="block" id="path-a">
+    <span class="section-label">Path A</span>
+    <h2 class="section-title">Pay with a card</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div>
-          <span class="who">Your department</span>
-          <div class="step-title">Send us your Apple Business Manager Organization ID</div>
-          <div class="step-desc">Sign in to <a href="https://business.apple.com" target="_blank" rel="noopener" style="color:var(--fire-bright);text-decoration:none">business.apple.com</a>, open Preferences, and copy the Organization ID shown there. Email it to <strong style="color:var(--text)">support@docufire.app</strong> with how many investigators you're equipping. If your department doesn't have Apple Business Manager yet, see the note below; it's free and takes a few days.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div>
-          <span class="who">DocuFire</span>
-          <div class="step-title">We send an invoice</div>
-          <div class="step-desc"><strong style="color:var(--text)">$169.99 per iPad, per year</strong> — the same price an individual investigator pays on the App Store, with no volume markup. You issue a PO or pay the invoice directly to DocuFire LLC through your normal procurement. Apple is not part of the transaction.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div>
-          <span class="who">DocuFire</span>
-          <div class="step-title">We unlock the app for your organization</div>
-          <div class="step-desc">When the PO is in hand, we add your Organization ID to the app's private distribution list. Within about an hour, DocuFire Institutional Edition appears in your Apple Business Manager store under Custom Apps. It shows a price of $0.00 there because you've already paid us.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div>
-          <span class="who">Your IT team</span>
-          <div class="step-title">Take licenses and push the app</div>
-          <div class="step-desc">In Apple Business Manager: Apps &amp; Services → Apps &amp; Books → View Store → Custom Apps. Open the app, take Managed licenses for the number of iPads, and click Get. Then install it on the iPads with your device-management tool (Jamf, Intune, Mosyle, Kandji, or similar), or, without one, with Apple Configurator on a Mac and a cable.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <div>
-          <span class="who">Your investigators</span>
-          <div class="step-title">Open the app and sign in</div>
-          <div class="step-desc">DocuFire opens like any app. When iOS asks, the investigator signs in with their Apple ID. Their cases are stored in their own iCloud account and sync to their own devices and to the web portal. Nothing to register with DocuFire.</div>
-        </div>
-      </div>
+      <div class="step"><div class="step-num">01</div><div><div class="step-title">Install DocuFire from the App Store</div><div class="step-desc">On each iPad, open the App Store, search for <strong style="color:var(--text)">DocuFire</strong>, install it.</div></div></div>
+      <div class="step"><div class="step-num">02</div><div><div class="step-title">Try it, then subscribe in the app</div><div class="step-desc">Run a real case on the free trial if you like. When ready, tap Subscribe inside the app and choose the annual plan.</div></div></div>
+      <div class="step"><div class="step-num">03</div><div><div class="step-title">The card on that iPad's Apple ID is charged</div><div class="step-desc">A department card on a department Apple ID is fine. Renewal is automatic through Apple, and you cancel the same way as any subscription.</div></div></div>
     </div>
+    <p class="body-text" style="margin-top:16px;">That's it. You never need to contact us.</p>
+  </div>
 
-    <div class="btn-row" style="margin-top:24px;">
-      <a class="primary" href="/institutional-setup-guide.pdf" target="_blank" rel="noopener">Setup guide for your IT team (PDF)</a>
-      <a class="secondary" href="mailto:support@docufire.app?subject=DocuFire%20Institutional%20Edition">Email support@docufire.app</a>
+  <div class="block" id="path-b">
+    <span class="section-label">Path B</span>
+    <h2 class="section-title">Purchase order, with IT</h2>
+    <p class="body-text">This uses <strong>DocuFire Institutional Edition</strong>: the same app, delivered through Apple Business Manager, which is Apple's free system for organizations that buy software. Your IT person will know it, or can set it up at <a href="https://business.apple.com" target="_blank" rel="noopener">business.apple.com</a> in a few days.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><span class="who">Your IT person</span><div class="step-title">Copy your Organization ID</div><div class="step-desc">Sign in to Apple Business Manager, open Preferences, and copy the Organization ID shown there.</div></div></div>
+      <div class="step"><div class="step-num">02</div><div><span class="who">You</span><div class="step-title">Email it to us</div><div class="step-desc">Send the Organization ID and the number of iPads to <strong style="color:var(--text)">support@docufire.app</strong>.</div></div></div>
+      <div class="step"><div class="step-num">03</div><div><span class="who">DocuFire</span><div class="step-title">We send an invoice</div><div class="step-desc">$169.99 × the number of iPads. Pay it or issue a PO to DocuFire LLC the way you'd pay any vendor. Apple is not part of the transaction.</div></div></div>
+      <div class="step"><div class="step-num">04</div><div><span class="who">DocuFire</span><div class="step-title">We switch the app on for your organization</div><div class="step-desc">Within about an hour, DocuFire Institutional Edition appears in your Apple Business Manager under Apps &amp; Books → View Store → Custom Apps, showing $0.00 because you've paid us directly.</div></div></div>
+      <div class="step"><div class="step-num">05</div><div><span class="who">Your IT person</span><div class="step-title">Take licenses and install</div><div class="step-desc">Open it there, choose Managed licenses, enter the number of iPads, click Get. Then install it on the iPads with the same tool they use for every other app (Jamf, Intune, Mosyle, Kandji, or similar).</div></div></div>
+      <div class="step"><div class="step-num">06</div><div><span class="who">Each investigator</span><div class="step-title">Open DocuFire and sign in</div><div class="step-desc">Sign in with their Apple ID when asked. Done.</div></div></div>
+    </div>
+  </div>
+
+  <div class="block" id="path-c">
+    <span class="section-label">Path C</span>
+    <h2 class="section-title">Purchase order, no IT and no Mac</h2>
+    <p class="body-text">Same as Path B through the invoice. The difference is how the app reaches the iPads: instead of a management tool, each investigator gets a code.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><div class="step-title">Enroll in Apple Business Manager</div><div class="step-desc">Free, at <a href="https://business.apple.com" target="_blank" rel="noopener" style="color:var(--fire-bright);text-decoration:none">business.apple.com</a>. Apple verifies you in a few days; a federal tax ID is enough. Then copy the Organization ID from Preferences.</div></div></div>
+      <div class="step"><div class="step-num">02</div><div><div class="step-title">Email us, pay the invoice</div><div class="step-desc">Send the Organization ID and the number of iPads to <strong style="color:var(--text)">support@docufire.app</strong>. We invoice $169.99 × iPads and, once paid, switch the app on for your organization.</div></div></div>
+      <div class="step"><div class="step-num">03</div><div><div class="step-title">Get one code per iPad</div><div class="step-desc">In Apple Business Manager, open Apps &amp; Books → View Store → Custom Apps → DocuFire Institutional Edition. Under License Type choose <strong style="color:var(--text)">redeemable codes</strong>, enter the number of iPads, click Get.</div></div></div>
+      <div class="step"><div class="step-num">04</div><div><div class="step-title">Each investigator redeems their code</div><div class="step-desc">On the iPad: open the App Store app, tap the picture in the top corner, tap <strong style="color:var(--text)">Redeem Gift Card or Code</strong>, enter it. DocuFire Institutional Edition installs like any app. Open it and sign in with their Apple ID when asked.</div></div></div>
+    </div>
+    <div class="note-box" style="margin-top:16px;">
+      <div class="note-label">Good to know about codes</div>
+      <p>Each code works once and stays with the Apple ID that redeemed it. If an investigator leaves, their replacement needs a new code; email us and we'll sort it out.</p>
     </div>
   </div>
 
   <div class="block">
-    <span class="section-label">What your IT team needs</span>
-    <h2 class="section-title">Three things, all of which you may already have</h2>
-    <div class="cards">
-      <div class="card">
-        <h4>An Apple Business Manager account</h4>
-        <p>Free, at <a href="https://business.apple.com" target="_blank" rel="noopener">business.apple.com</a>. Municipalities can use Apple Business Manager or Apple School Manager. Apple verifies the organization, usually within a few business days. In the U.S. a federal tax ID is enough; a D-U-N-S number is no longer required. Start this while the PO is in procurement.</p>
-      </div>
-      <div class="card">
-        <h4>Something to install it with</h4>
-        <p>Custom apps don't appear in the App Store on the iPad; your IT team installs them. If your department already manages its iPads with a tool like Jamf, Intune, Mosyle, or Kandji, that tool does it in a few clicks. If not, a free Apple program called Apple Configurator, run on any Mac with the iPad plugged in by cable, does the same job for a handful of devices.</p>
-      </div>
-      <div class="card">
-        <h4>Your Organization ID</h4>
-        <p>One line of text from Apple Business Manager's Preferences page. It's the only thing we need from you to turn the app on for your organization.</p>
-      </div>
-      <div class="card">
-        <h4>iPads</h4>
-        <p>DocuFire is an iPad app. Any iPad running a current iOS works; iPad Pro adds LiDAR room scanning. It also runs on Mac. Your investigators' personal or department Apple IDs are fine either way.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="block">
-    <span class="section-label">Questions we get</span>
+    <span class="section-label">Common questions</span>
     <h2 class="section-title">Straight answers</h2>
     <div class="faq">
-      <details>
-        <summary>How much does it cost, and what if we'd rather just pay by card?</summary>
-        <p>$169.99 per iPad, per year — exactly what an individual pays for the annual subscription on the App Store. Ten iPads is $1,699.90 a year, invoiced to your department. There's no setup fee and no volume markup, and the price you pay DocuFire is the whole price; Apple charges nothing on top. If a purchase order is more trouble than it's worth for your size, skip Institutional Edition entirely: put the public DocuFire app on each iPad from the App Store and subscribe with a department card. Same app, same price, no paperwork on either side.</p>
-      </details>
-      <details>
-        <summary>Can we try it before we buy?</summary>
-        <p>Yes. The public DocuFire app on the App Store is the same software with a free trial. Have an investigator run a case or two on it. Whatever they build there stays in their iCloud and shows up in Institutional Edition when you switch, because both use the same sync.</p>
-      </details>
-      <details>
-        <summary>Where is our case data stored?</summary>
-        <p>In each investigator's own iCloud account, encrypted by Apple. Your Apple Business Manager account never holds case data, and neither does DocuFire LLC. We can't see your cases. If your department prefers a shared caseload, put the iPads on one shared Apple ID; every case carries a Lead Investigator field so it stays clear who's working what.</p>
-      </details>
-      <details>
-        <summary>Do we need an MDM?</summary>
-        <p>No. An MDM is the software IT departments use to manage iPads remotely, and if you have one it installs DocuFire in a few clicks. Without one, Apple Configurator, a free Apple program for the Mac, installs it over a cable. Either works; Configurator is fine for a handful of iPads.</p>
-      </details>
-      <details>
-        <summary>How do updates work?</summary>
-        <p>Automatically, through the same license. When we release a new version, it reaches your iPads the same way the first install did. Nothing to re-buy or re-approve.</p>
-      </details>
-      <details>
-        <summary>Can we add investigators later?</summary>
-        <p>Yes. Email us the new count, we invoice the added iPads at $169.99 each, prorated to your renewal date, and your IT team takes more licenses in Apple Business Manager. No new procurement cycle for the app itself.</p>
-      </details>
-      <details>
-        <summary>Can investigators work from a desktop?</summary>
-        <p>Yes. The web portal at <a href="https://portal.docufire.app" target="_blank" rel="noopener">portal.docufire.app</a> opens the same cases in a browser, using the same Apple ID as the iPad. It's built for finishing reports at the office; final PDF and Word export happens in the app.</p>
-      </details>
-      <details>
-        <summary>We already bought DocuFire on the App Store for a few investigators. What now?</summary>
-        <p>Keep using it until you're ready to move. When you switch to Institutional Edition, their cases come along automatically, and they cancel the App Store subscription. Email us and we'll time it so nobody loses access.</p>
-      </details>
+      <details><summary>Where does our case data live?</summary><p>In each investigator's own iCloud account, encrypted by Apple. Your Apple Business Manager account never holds case data, and neither does DocuFire LLC. We cannot see your cases.</p></details>
+      <details><summary>What if investigators share iPads?</summary><p>Put the shared iPads on one shared Apple ID. Everyone on it sees the same case list, and every case has a Lead Investigator field so it stays clear who's working what.</p></details>
+      <details><summary>How do updates work?</summary><p>Automatically, on every path. Nothing to re-buy or re-approve.</p></details>
+      <details><summary>Can we add investigators later?</summary><p>Yes. Path A: subscribe on the new iPad. Paths B and C: email us the new count; we invoice the added iPads, prorated to your renewal date, and your IT takes more licenses or codes.</p></details>
+      <details><summary>Can we try it before committing?</summary><p>Yes. Install the public DocuFire app from the App Store on one iPad and run a real case. Everything built there carries over when you move to Institutional Edition, because both use the same iCloud sync.</p></details>
+      <details><summary>We already bought seats on the App Store. Can we move to a PO?</summary><p>Yes. Email us; we'll time the switch so nobody loses access, and those investigators cancel their App Store subscription afterward.</p></details>
+      <details><summary>Is there a desktop version?</summary><p>Investigators can finish reports in a browser at <a href="https://portal.docufire.app" target="_blank" rel="noopener">portal.docufire.app</a>, same Apple ID, same cases. Final PDF and Word export happens in the app. DocuFire also runs on Mac.</p></details>
+      <details><summary>Who do we call?</summary><p>Nobody, ideally. Email <a href="mailto:support@docufire.app">support@docufire.app</a> and Roger Thorpe, who built DocuFire and is a working fire investigator, answers it himself.</p></details>
     </div>
   </div>
 
