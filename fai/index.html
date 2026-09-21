@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Landing/redirect for the printed magazine QR code (docufire.app/fai).
+     Counts the scan in Google Analytics (page view + qr_scan event with the campaign name), then sends the
+     reader to the App Store with an App Analytics campaign link so the download is attributed too.
+     To attribute downloads: set APP_STORE_PROVIDER_TOKEN below (App Store Connect > your app > App Analytics >
+     Campaigns > create a link named for this ad; the "pt" value in that link is the provider token).
+     A new ad = copy this folder (e.g. /fai2) and change CAMPAIGN. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-479ZPWXZFM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-479ZPWXZFM');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>DocuFire — Opening the App Store</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#0D0D0F; color:#F0EEE8; font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif; text-align:center; }
+  a { color:#E8431A; }
+  h1 { font-size:28px; margin:0 0 8px; } p { margin:6px 0; font-size:16px; }
+</style>
+</head>
+<body>
+<div>
+  <h1>DocuFire</h1>
+  <p>Opening the App Store…</p>
+  <p><a id="go" href="https://apps.apple.com/app/docufire/id6769825319">Tap here if nothing happens</a></p>
+</div>
+<script>
+  var CAMPAIGN = 'fai-fall2026-halfpage';       // shows as the campaign in App Store Connect and Google Analytics
+  var APP_STORE_PROVIDER_TOKEN = '';            // <- paste the "pt" value from your App Store Connect campaign link
+  var url = 'https://apps.apple.com/app/docufire/id6769825319';
+  if (APP_STORE_PROVIDER_TOKEN) url += '?pt=' + encodeURIComponent(APP_STORE_PROVIDER_TOKEN) + '&ct=' + encodeURIComponent(CAMPAIGN) + '&mt=8';
+  document.getElementById('go').href = url;
+  var went = false;
+  function go() { if (went) return; went = true; window.location.replace(url); }
+  gtag('event', 'qr_scan', { campaign: CAMPAIGN, event_callback: go });
+  setTimeout(go, 1200);                          // never leave the reader stuck if analytics is blocked
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/docufire/id6769825319"></noscript>
+</body>
+</html>
