@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Short link for the printed ad (docufire.app/po): counts the visit in Google Analytics, then opens the agencies / purchase-order page. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-479ZPWXZFM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-479ZPWXZFM');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>DocuFire — For Agencies &amp; Departments</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#0D0D0F; color:#F0EEE8; font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif; text-align:center; }
+  a { color:#E8431A; }
+  h1 { font-size:28px; margin:0 0 8px; } p { margin:6px 0; font-size:16px; }
+</style>
+</head>
+<body>
+<div>
+  <h1>DocuFire</h1>
+  <p>Opening the agencies page…</p>
+  <p><a id="go" href="https://docufire.app/agencies.html">Tap here if nothing happens</a></p>
+</div>
+<script>
+  var CAMPAIGN = 'po-fall2026-halfpage';       // shows as the campaign in App Store Connect and Google Analytics
+    var url = 'https://docufire.app/agencies.html';
+  document.getElementById('go').href = url;
+  var went = false;
+  function go() { if (went) return; went = true; window.location.replace(url); }
+  gtag('event', 'po_visit', { campaign: CAMPAIGN, event_callback: go });
+  setTimeout(go, 1200);                          // never leave the reader stuck if analytics is blocked
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://docufire.app/agencies.html"></noscript>
+</body>
+</html>
